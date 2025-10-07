@@ -13,11 +13,7 @@ const Index = () => {
 
   function handlePress(num: number): void{
     setClicks(clicks + 1)
-    if (num == 0) {
-      setCount(count + 1);
-    } else {
-      setCount(count - 1);
-    }
+    setCount(count + num)
     if (clicks % 10 == 0) {
       alert("Enhorabuena, has hecho " + clicks + " clicks");
     }
@@ -34,12 +30,12 @@ const Index = () => {
       <Text style={styles.title}>
         Contador: {count}
       </Text>
-      <Pressable onPress={() => handlePress(0)} style={styles.button}>
+      <Pressable onPress={() => handlePress(1)} style={styles.button}>
         <Text style={styles.buttonText}>Incrementar</Text>
         <Ionicons name="add-circle" size={24} color="white" />
       </Pressable>
 
-      <Pressable onPress={() => handlePress(1)} style={styles.button}>
+      <Pressable onPress={() => handlePress(-1)} style={styles.button}>
         <Text style={styles.buttonText}>Decrementar</Text>
         <Ionicons name="add-circle" size={24} color="white" />
       </Pressable>
