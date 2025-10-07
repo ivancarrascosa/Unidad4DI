@@ -18,9 +18,10 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderRadius: 20,
     marginTop: 30,
-    maxWidth: '80%',
+    width: 400,
+    maxWidth: '90%',
     minWidth: '50%',
-    padding: 20
+    padding: 20,
   },
   imagen: {
     height: 100,
