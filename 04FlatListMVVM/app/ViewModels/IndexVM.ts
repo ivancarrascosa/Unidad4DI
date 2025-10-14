@@ -20,7 +20,12 @@ export class IndexVM {
         this.alertaPersona();
     }
 
-    public alertaPersona(): void {
+    /**
+     * Función que muestra una alerta con el nombre y apellido de la persona seleccionada
+     * pre-c: None
+     * post-c: None
+     */
+    private alertaPersona(): void {
         alert(`La persona seleccionada es ${this._personaSeleccionada?.nombre} ${this._personaSeleccionada?.apellidos}`);
     }
 
