@@ -2,41 +2,26 @@ import { RepositoryPersona } from "../Models/Data/RepositoryPersona";
 import { Persona } from "../Models/Entities/PersonaModel";
 
 export class IndexVM {
-    private expandedIds: Set<number> = new Set();
-    private static instance: IndexVM;
+    private _personas: Persona[] | null = null;
+
+    private _personaSeleccionada: Persona | null = null;
     
-    public getPersonas(): Persona[] {
-        return RepositoryPersona.Personas;
+    public get personas(): Persona[] {
+        this._personas = RepositoryPersona.Personas;
+        return this._personas
     }
     
-    public static getInstance(): IndexVM {
-        if (!IndexVM.instance) {
-            IndexVM.instance = new IndexVM();
-        }
-        return IndexVM.instance;
+    public get personaSeleccionada(): Persona | null{
+        return this._personaSeleccionada
     }
 
-    public isExpanded(id: number): boolean {
-        return this.expandedIds.has(id);
+    public set personaSeleccionada(value: Persona | null) {
+        this._personaSeleccionada = value;
+        this.alertaPersona();
     }
-    
-    public toggleExpanded(id: number): void {
-        if (this.expandedIds.has(id)) {
-            this.expandedIds.delete(id);
-        } else {
-            this.expandedIds.add(id);
-        }
+
+    public alertaPersona(): void {
+        alert(`La persona seleccionada es ${this._personaSeleccionada?.nombre} ${this._personaSeleccionada?.apellidos}`);
     }
-    
-    public getPersonaDetails(persona: Persona): string[] {
-        return [
-            `Nombre: ${persona.Nombre}`,
-            `Apellidos: ${persona.Apellidos}`,
-            'Email: aquí iría el mail'
-        ];
-    }
-    
-    public getPersonaFullName(persona: Persona): string {
-        return `${persona.Nombre} ${persona.Apellidos}`;
-    }
-}
+
+    }    

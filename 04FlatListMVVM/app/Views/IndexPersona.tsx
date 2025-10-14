@@ -2,42 +2,24 @@ import React, { useMemo, useState } from "react";
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { IndexVM } from "../ViewModels/IndexVM";
 
-
+const ViewModel = new IndexVM;
 export default function IndexPersona() {
-  const [, forceUpdate] = useState({});
-  const viewModel = useMemo(() => IndexVM.getInstance(), []);
-
-  const handlePress = (id: number) => {
-    viewModel.toggleExpanded(id);
-    forceUpdate({});
-  };
 
   return (
     <FlatList
-      data={viewModel.getPersonas()}
+      data = {ViewModel.personas}
       keyExtractor={(persona) => persona.id.toString()}
-      renderItem={({ item }) => (
-        <TouchableOpacity onPress={() => handlePress(item.id)}>
-          <View style={styles.container}>
-            <Text style={styles.people}>
-              {viewModel.getPersonaFullName(item)}
-            </Text>
-            
-            {viewModel.isExpanded(item.id) && (
-              <View style={styles.detalles}>
-                {viewModel.getPersonaDetails(item).map((detail, index) => (
-                  <Text key={index} style={styles.detalleTexto}>
-                    {detail}
-                  </Text>
-                ))}
-              </View>
-            )}
-          </View>
+      renderItem = {({item}) => (
+        <TouchableOpacity onPress={() => ViewModel.personaSeleccionada = item}>
+        <View style = {styles.container}>
+          <Text style = {styles.people}>{item.Nombre} {item.Apellidos}</Text>
+        </View>
         </TouchableOpacity>
-      )}
-    />
-  );
-}
+      )}>
+        
+      </FlatList>
+      )
+    }
 
 const styles = StyleSheet.create({
     container: {

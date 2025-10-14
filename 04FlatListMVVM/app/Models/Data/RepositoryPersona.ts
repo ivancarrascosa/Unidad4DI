@@ -1,5 +1,10 @@
 import { Persona } from "../Entities/PersonaModel";
 export class RepositoryPersona {
+    /**
+     * funcion static que devuelve un listado inventado de personas
+     * pre-c: nada
+     * post: no puede estar vacío
+     */
     public static get Personas() {
         return [
                 new Persona(1, "Elena", "Alcalde García"),
