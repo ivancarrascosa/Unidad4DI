@@ -11,7 +11,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <TextInput value={texto} onChangeText={setTexto} style={{borderWidth: 1, borderRadius: 10}}/>
+      <TextInput value={texto} onChangeText={setTexto} style={{borderWidth: 1, borderRadius: 10, width: "30%"}}/>
       <Text>Has escrito: {texto}</Text>
     </View>
   );
